@@ -6,16 +6,16 @@ export default class ProdutoCompra extends BaseModel {
   public id: number
 
   @column()
-  public produto_id: number
+  public produtoId: number
 
   @column()
-  public compra_id: number
+  public compraId: number
 
   @column()
-  public qtd_produto: number
+  public qtdProduto: number
 
   @column()
-  public valor_produto: number
+  public valorProduto: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

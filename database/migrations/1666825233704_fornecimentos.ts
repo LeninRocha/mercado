@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.integer('produto_id').unsigned().references('id').inTable('produtos')
       table.decimal('preco',10.2)
       table.integer('fornecedor_id').unsigned().references('id').inTable('fornecedors')
-      table.datetime('date-fornecimento').notNullable()
+      table.date('data_fornecimento').notNullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

@@ -1,15 +1,16 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Fornecimento from './Fornecimento'
 
 export default class Fornecedor extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public cnpj: string
+  public nome: string
 
   @column()
-  public nome: string
+  public cnpj: string
 
   @column()
   public telefone: string
@@ -18,7 +19,7 @@ export default class Fornecedor extends BaseModel {
   public email: string
 
   @column()
-  public cep: number
+  public cep: string
 
   @column()
   public logradouro: string
@@ -37,4 +38,8 @@ export default class Fornecedor extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasMany( ()=>Fornecimento )
+  public fornecimentos: HasMany<typeof Fornecimento>
 }
+

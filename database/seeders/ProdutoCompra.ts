@@ -5,22 +5,22 @@ export default class extends BaseSeeder {
   public async run () {
     await ProdutoCompra.createMany([
       {
-      produto_id: 1, 
-      compra_id: 1, 
-      qtd_produto: 2,
-      valor_produto: 45, 
+      produtoId: 1, 
+      compraId: 1, 
+      qtdProduto: 2,
+      valorProduto: 45, 
     },
     {
-      produto_id: 9, 
-      compra_id: 2, 
-      qtd_produto: 3,
-      valor_produto: 25, 
+      produtoId: 6, 
+      compraId: 2, 
+      qtdProduto: 3,
+      valorProduto: 25, 
     },
     {
-      produto_id: 11, 
-      compra_id: 3, 
-      qtd_produto: 1,
-      valor_produto: 25, 
+      produtoId: 3, 
+      compraId: 3, 
+      qtdProduto: 1,
+      valorProduto: 25, 
     },
     
     ])

@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.integer('produto_id').unsigned().references('id').inTable('produtos')
       table.integer('compra_id').unsigned().references('id').inTable('compras')
       table.integer('qtd_produto').notNullable()
-      table.decimal('valor_produto',10.2)
+      table.decimal('valor_produto')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

@@ -4,7 +4,7 @@ import Cargo from "App/Models/Cargo"
 
 export default class CargosController {
     index(){
-        return Cargo.query()
+        return Cargo.query().preload('funcionarios').paginate(1, 2)
     }
     
     store({request}){
