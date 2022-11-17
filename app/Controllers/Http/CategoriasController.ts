@@ -1,14 +1,15 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Categoria from "App/Models/Categoria"
+import CategoriaValidator from "App/Validators/CategoriaValidator"
 
 export default class CategoriasController {
     index(){
-        return Categoria.query()
+        return Categoria.query().preload('produtos').paginate(1, 2)
     }
     
-    store({request}){
-        const dados = request.only(['nome'])
+    async store({request}){
+        const dados = await request.validate(CategoriaValidator)
         return Categoria.create(dados)
     }
 

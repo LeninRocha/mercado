@@ -1,14 +1,15 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Cargo from "App/Models/Cargo"
+import CargoValidator from "App/Validators/CargoValidator"
 
 export default class CargosController {
     index(){
         return Cargo.query().preload('funcionarios').paginate(1, 2)
     }
     
-    store({request}){
-        const dados = request.only(['nome'])
+    async store({request}){
+        const dados = await request.validate(CargoValidator)
         return Cargo.create(dados)
     }
 
