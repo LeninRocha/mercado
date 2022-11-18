@@ -27,6 +27,9 @@ export default class CompraValidator {
     clienteId: schema.number([
       rules.exists({ table: 'clientes', column: 'id' })
     ]),
+    funcionarioId: schema.number([
+      rules.exists({ table: 'funcionarios', column: 'id'})
+    ]),
     valorTotal: schema.number.optional([
       rules.range(3, 1000)
     ]),

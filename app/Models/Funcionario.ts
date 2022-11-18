@@ -30,7 +30,7 @@ export default class Funcionario extends BaseModel {
 
   @manyToMany(() => Cliente, {
     pivotTable: 'compras'})
-  public compras: ManyToMany<typeof Cliente>
+  public clientes: ManyToMany<typeof Cliente>
 
   @belongsTo( ()=>Cargo )
   public cargo: BelongsTo<typeof Cargo>

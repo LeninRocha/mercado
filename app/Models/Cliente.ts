@@ -27,5 +27,5 @@ export default class Cliente extends BaseModel {
 
   @manyToMany(() => Funcionario, {
     pivotTable: 'compras'})
-  public compras: ManyToMany<typeof Funcionario>
+  public funcionarios: ManyToMany<typeof Funcionario>
 }

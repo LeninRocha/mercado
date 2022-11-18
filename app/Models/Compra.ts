@@ -11,6 +11,9 @@ export default class Compra extends BaseModel {
   public clienteId: number
 
   @column()
+  public funcionarioId: number
+
+  @column()
   public valorTotal: number
 
   @column()

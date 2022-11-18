@@ -1,14 +1,15 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Compra from "App/Models/Compra"
+import CompraValidator from "App/Validators/CompraValidator"
 
 export default class ComprasController {
     index(){
-        return Compra.query()
+        return Compra.query().preload('produtos').paginate(1, 2)
     }
     
-    store({request}){
-        const dados = request.only(['valor_total', 'date'])
+    async store({request}){
+        const dados = await request.validate(CompraValidator)
         return Compra.create(dados)
     }
 
@@ -25,11 +26,11 @@ export default class ComprasController {
 
     async update({request}) {
         const id = request.param('id')
-        const resume =  await  Compra.findOrFail(id)
+        const compra =  await  Compra.findOrFail(id)
 
-        const dados = request.only(['valor_total', 'date'])
+        const dados = request.only(['clienteId', 'funcionarioId', 'valorTotal', 'dataHora'])
 
-        resume.merge(dados)
-        return resume.save()
+        compra.merge(dados)
+        return compra.save()
     }
 }

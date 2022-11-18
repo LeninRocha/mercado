@@ -1,14 +1,15 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Fornecedor from "App/Models/Fornecedor"
+import FornecedorValidator from "App/Validators/FornecedorValidator"
 
 export default class FornecedorsController {
     index(){
-        return Fornecedor.query()
+        return Fornecedor.query().preload('produtos').paginate(1, 2)
     }
     
-    store({request}){
-        const dados = request.only(['nome', 'cnpj', 'telefone', 'email', 'cep', 'logradouro', 'complemento', 'numero', 'bairro'])
+    async store({request}){
+        const dados = await request.validate(FornecedorValidator)
         return Fornecedor.create(dados)
     }
 
@@ -25,11 +26,11 @@ export default class FornecedorsController {
 
     async update({request}) {
         const id = request.param('id')
-        const resume =  await  Fornecedor.findOrFail(id)
+        const fornecedor =  await  Fornecedor.findOrFail(id)
 
         const dados = request.only(['nome', 'cnpj', 'telefone', 'email', 'cep', 'logradouro', 'complemento', 'numero', 'bairro'])
 
-        resume.merge(dados)
-        return resume.save()
+        fornecedor.merge(dados)
+        return fornecedor.save()
     }
 }

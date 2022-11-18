@@ -44,6 +44,6 @@ export default class Fornecedor extends BaseModel {
 
   @manyToMany(() => Produto, {
     pivotTable: 'fornecimentos'})
-  public fornecimentos: ManyToMany<typeof Produto>
+  public produtos: ManyToMany<typeof Produto>
 }
 
