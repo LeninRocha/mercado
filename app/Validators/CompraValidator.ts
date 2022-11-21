@@ -36,7 +36,7 @@ export default class CompraValidator {
     dataHora: schema.date({
       format: 'yyyy-MM-dd HH:mm',
     }, [
-      rules.afterOrEqual('today')
+      rules.beforeOrEqual('today')
     ]),
   })
 
